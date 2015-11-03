@@ -16,7 +16,11 @@ class CreateProposalsTable extends Migration
             $table->increments('id');
             $table->integer('meeting_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->char('content');
             $table->timestamps();
+
+            $table->foreign('meeting_id')->references('id')->on('meetings');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
