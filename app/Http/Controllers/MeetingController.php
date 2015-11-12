@@ -5,6 +5,7 @@ namespace EVA\Http\Controllers;
 use Illuminate\Http\Request;
 use EVA\Http\Requests;
 use EVA\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 
 class MeetingController extends Controller
 {
@@ -82,5 +83,13 @@ class MeetingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function apiInvoker() {
+        $client = new Client();
+        $res = $client->request('GET', 'http://tor.ethanwang.ca/api/restaurants');
+        $body = json_decode( $res->getBody());
+        //var_dump($body);
+        return $body[2]->id;
     }
 }

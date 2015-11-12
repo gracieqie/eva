@@ -36,3 +36,10 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function() {
     Route::get('/register', 'AuthController@getRegister');
     Route::post('/register', 'AuthController@postRegister');
 });
+
+
+/**
+ * Test
+ */
+
+Route::get('/apitest', 'MeetingController@apiInvoker');
