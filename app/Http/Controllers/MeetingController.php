@@ -87,9 +87,11 @@ class MeetingController extends Controller
 
     public function apiInvoker() {
         $client = new Client();
-        $res = $client->request('GET', 'http://tor.ethanwang.ca/api/restaurants');
-        $body = json_decode( $res->getBody());
+        $response = $client->request('GET',
+            'http://tor.ethanwang.ca/api/restaurants/search',
+            ['query' => 'keyword=ABC']);
+        $body = json_decode( $response->getBody());
         //var_dump($body);
-        return $body[2]->id;
+        return var_dump($body);
     }
 }

@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-    public function status() {
+    public function user() {
+        return $this->belongsToMany('EVA\Models\User');
+    }
 
+    public function proposal() {
+        return $this->belongsTo('EVA\Models\Proposal');
     }
 }
